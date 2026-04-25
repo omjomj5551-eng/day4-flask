@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="light" lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ post.title }} - 저널</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet" />
+  <style>
+    body { background-color: #FDFBF7; color: #181512; font-family: "Newsreader", serif; }
+  </style>
+</head>
+<body>
+  <header class="border-b border-[#F5F0E6] sticky top-0 bg-[#FDFBF7]">
+    <div class="flex justify-between items-center px-8 py-6 max-w-screen-xl mx-auto">
+      <div class="text-2xl italic font-semibold">저널</div>
+      <div class="flex gap-3">
+        <a href="{{ url_for('create_post') }}" class="px-6 py-2 border border-[#7e756f]">글쓰기</a>
+        <a href="{{ url_for('list_posts') }}" class="px-6 py-2 bg-[#2d2926] text-[#FDFBF7]">목록</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[720px] mx-auto px-6 py-20">
+    <article class="space-y-8">
+      <header class="space-y-4">
+        <div class="text-sm text-[#6e5b44]" style="font-family: 'Plus Jakarta Sans', sans-serif;">{{ post.created_at }}</div>
+        <h1 class="text-5xl">{{ post.title }}</h1>
+      </header>
+
+      <div class="text-2xl leading-relaxed text-[#4d4540] whitespace-pre-wrap">{{ post.content }}</div>
+    </article>
+  </main>
+</body>
+</html>
