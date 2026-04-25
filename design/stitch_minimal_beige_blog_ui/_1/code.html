@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Journal — Digital Slow Living</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Plus+Jakarta+Sans:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#2d2926",
+                      "secondary-container": "#f5dcbe",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#e3e2e4",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#f1edec",
+                      "on-surface-variant": "#4d4540",
+                      "on-surface": "#1c1b1b",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#f8dec1",
+                      "on-secondary": "#ffffff",
+                      "primary": "#181512",
+                      "on-tertiary-fixed": "#1a1c1d",
+                      "primary-fixed-dim": "#cdc5c0",
+                      "inverse-surface": "#313030",
+                      "on-primary-container": "#96908b",
+                      "inverse-on-surface": "#f4f0ee",
+                      "on-secondary-fixed": "#261907",
+                      "outline": "#7e756f",
+                      "on-secondary-container": "#725f48",
+                      "background": "#fdf8f7",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#1e1b18",
+                      "on-tertiary-container": "#919193",
+                      "primary-fixed": "#e9e1dc",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary": "#151618",
+                      "on-primary-fixed-variant": "#4b4642",
+                      "on-secondary-fixed-variant": "#55442e",
+                      "surface": "#fdf8f7",
+                      "tertiary-fixed-dim": "#c7c6c8",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e6e1e0",
+                      "secondary": "#6e5b44",
+                      "surface-tint": "#635d5a",
+                      "surface-container-highest": "#e6e1e0",
+                      "surface-container-high": "#ece7e6",
+                      "secondary-fixed-dim": "#dbc3a6",
+                      "on-tertiary-fixed-variant": "#464749",
+                      "surface-dim": "#ddd9d8",
+                      "on-background": "#1c1b1b",
+                      "inverse-primary": "#cdc5c0",
+                      "outline-variant": "#cfc4bd",
+                      "surface-container-low": "#f7f3f1",
+                      "tertiary-container": "#292a2c",
+                      "surface-bright": "#fdf8f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1200px",
+                      "margin-mobile": "20px",
+                      "section-gap": "80px",
+                      "unit": "8px",
+                      "reading-width": "720px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "label-caps": ["Plus Jakarta Sans"],
+                      "h1": ["Newsreader"],
+                      "body-lg": ["Newsreader"],
+                      "h2": ["Newsreader"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "h3": ["Newsreader"],
+                      "body-md": ["Newsreader"]
+              },
+              "fontSize": {
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "h2": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                      "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FDFBF7;
+            color: #2D2926;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-secondary-fixed">
+<!-- TopAppBar -->
+<header class="bg-[#FDFBF7] dark:bg-[#1A1A1A] border-b border-[#F5F0E6] dark:border-[#2D2926] docked full-width top-0 z-50 sticky flat no shadows">
+<div class="flex justify-between items-center px-8 py-6 max-w-screen-xl mx-auto">
+<div class="font-serif text-2xl italic font-semibold text-[#2D2926] dark:text-[#EAEAEA]">Journal</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="font-serif font-light text-lg tracking-tight text-[#2D2926] dark:text-white border-b border-[#2D2926] dark:border-white pb-1 transition-all duration-300" href="#">Essays</a>
+<a class="font-serif font-light text-lg tracking-tight text-stone-500 dark:text-stone-400 hover:text-[#2D2926] transition-colors" href="#">Library</a>
+<a class="font-serif font-light text-lg tracking-tight text-stone-500 dark:text-stone-400 hover:text-[#2D2926] transition-colors" href="#">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="font-serif font-light text-lg tracking-tight text-[#2D2926] dark:text-[#EAEAEA] scale-95 active:scale-100 transition-transform px-6 py-2 border border-[#2D2926] hover:bg-stone-100 transition-all duration-300">
+                    Write
+                </button>
+<button class="md:hidden">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-[720px] mx-auto px-6 pt-24 pb-12">
+<!-- Hero Section -->
+<header class="mb-24 text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-6 block">COLLECTED THOUGHTS</span>
+<h1 class="font-h1 text-h1 text-primary-container mb-8">Reflections on the art of slow living in a digital age.</h1>
+<div class="w-16 h-px bg-outline-variant mx-auto"></div>
+</header>
+<!-- Post List -->
+<section class="space-y-20">
+<!-- Featured Post -->
+<article class="group cursor-pointer">
+<div class="mb-8 overflow-hidden aspect-[16/9] bg-surface-container-low">
+<img alt="Notebook and coffee" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Minimalist aesthetic of an open blank notebook and a cup of coffee on a light wooden table with soft morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEWn_LngaVPokI-vzrDlcu7MCyyGmCGwm31AS4ZTjPrfWwbKlDPNCmK8gfZmJwGGSulVEtCoxmBrlWO4t95B6bDXX9KgCXs4a3wghnD5oMKoCvRGPvUn1Eq58iWl3bhg1MJ93ckmpJ1WSTxo1fRstaI8Hyj8JF8a_rEMBDhD9MUwrBbf5D6l5_3mec05lxMP32wuUl-zaZKh8M3K29-WTkFtM8Wkq7BvCfFtU7WHofNW4DvdO3daD-_t_l5qGT3GvJNPbd-OR_e0Y"/>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Essay</span>
+<span class="text-stone-300 text-xs">•</span>
+<time class="font-label-md text-label-md text-on-surface-variant">October 24, 2024</time>
+</div>
+<h2 class="font-h2 text-h2 text-primary mb-4 group-hover:text-secondary transition-colors">The Architecture of Silence: Why we need digital retreats</h2>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">In an era of perpetual notification, the deliberate choice to disconnect is not just a luxury, but a necessity for creative survival.</p>
+</article>
+<!-- Regular Posts Grid -->
+<div class="grid grid-cols-1 gap-20">
+<article class="flex flex-col md:flex-row gap-8 items-start group cursor-pointer">
+<div class="w-full md:w-1/3 aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img alt="Lamp lighting" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Close up of a warm table lamp lighting a cozy reading nook with shadows and high contrast textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN_SEpkvCBXgYiTkJAlfRIJVzBmPRM8NHTFUY-J8sspct8c5h88j70E27OqkWsbDZPAYL1zhsAp7Nib2bIvIQdnwtbvUavHd9NV7RXy0vD1mOMtQXoHC6FF3am_Tx443sJXtSRUE4SknKyaKfsV9eOD11hBRQROmZ2_g345TpNJ-vFAHhTGRoBJdlHuvjID_DkkWYfuNvQm81kNqJh_4sjgztPQce823IznwPncPk78Yp_L4KCd1qXmp808pasc2tebyKAkbb-6VQ"/>
+</div>
+<div class="w-full md:w-2/3">
+<div class="flex items-center gap-4 mb-3">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Philosophy</span>
+<span class="text-stone-300 text-xs">•</span>
+<time class="font-label-md text-label-md text-on-surface-variant">October 18, 2024</time>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3 group-hover:text-secondary transition-colors">On the tactile pleasure of physical paper</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">How the resistance of a nib against fiber changes the way we structure our thoughts compared to the frictionless screen.</p>
+</div>
+</article>
+<article class="flex flex-col md:flex-row gap-8 items-start group cursor-pointer">
+<div class="w-full md:w-1/3 aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img alt="Nature landscape" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Sunlight filtering through a dense forest canopy creating rays of light and deep green shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg3WygYwFpSNO73B5ldp_MICkCvyvGz6UFRrPSdQpSVeiDor7fQPN9iu0S9ZDSPiJ9SC5M7lqYyeiWOYfVyGiT5OBp9Jpq1XCgCNr5fQbyNZPwPEJgGVTnrCgO24WPLoaRXe9VngEsA-tbz-8_JDflvC81l6Nq5vJNovEVy5kekEG4hxKESTVe58eIPedWsoPjSePnq5AjEZ_Rp9IivAN3CQbTRwevVxHZclFEsaz9dTuy8scgu7fbqhIre5jsjoZvmkPgyrTOJwk"/>
+</div>
+<div class="w-full md:w-2/3">
+<div class="flex items-center gap-4 mb-3">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Environment</span>
+<span class="text-stone-300 text-xs">•</span>
+<time class="font-label-md text-label-md text-on-surface-variant">October 12, 2024</time>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3 group-hover:text-secondary transition-colors">Finding deep focus in the wild</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">The biological connection between natural fractals and our ability to sustain prolonged creative attention.</p>
+</div>
+</article>
+<article class="flex flex-col md:flex-row gap-8 items-start group cursor-pointer">
+<div class="w-full md:w-1/3 aspect-[4/3] bg-surface-container-low overflow-hidden">
+<img alt="Typewriter" class="w-full h-full object-cover grayscale opacity-90 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" data-alt="Vintage black typewriter on a wooden desk with moody low lighting and dust particles in the air" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBDpqrbL756FUEnZduGD90ts0cWjSiKylLI5sEXaOGa8NH9QmlAuJZAjsHpm3hE8qLElPZ5xMlS38WGNpvBqblb67BJezdq-9_6EjiSlCIXsVk2HLgr1UgR3cU_SXd7CSkRXUDCjy-F9HaazatXzxW1KSe0lOIDvwuyhyMMH5aaSuMLwbyMIPF4tUMZDnUjpIXX5X4It2rJg8TNoiWsNaGy4dkqAF0U5zIVhFmpaqKgyZowEXW-9TKAfVRh8i65Xv7RcM60BJJ69I"/>
+</div>
+<div class="w-full md:w-2/3">
+<div class="flex items-center gap-4 mb-3">
+<span class="font-label-caps text-label-caps text-secondary uppercase">Craft</span>
+<span class="text-stone-300 text-xs">•</span>
+<time class="font-label-md text-label-md text-on-surface-variant">October 05, 2024</time>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3 group-hover:text-secondary transition-colors">The slow writer's toolkit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Tools that intentionally slow us down to make room for better questions and more thoughtful answers.</p>
+</div>
+</article>
+</div>
+</section>
+<!-- Newsletter CTA -->
+<section class="mt-32 p-12 bg-[#F5F0E6] dark:bg-[#2D2926] text-center border border-[#EAE2D5] dark:border-[#3A3633]">
+<h3 class="font-h3 text-h3 mb-4">Subscribe to the Sunday Edition</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-sm mx-auto">One curated thought on slow living, delivered to your inbox every weekend.</p>
+<form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+<input class="flex-grow bg-transparent border-b border-[#2D2926] dark:border-[#EAEAEA] py-2 font-serif focus:outline-none placeholder:text-stone-400" placeholder="email address" type="email"/>
+<button class="bg-[#2D2926] text-[#FDFBF7] px-8 py-3 font-label-caps text-label-caps hover:bg-stone-800 transition-colors uppercase tracking-widest">Join</button>
+</form>
+</section>
+<nav class="mt-24 flex justify-between items-center border-t border-[#F5F0E6] pt-12">
+<a class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                PREVIOUS
+            </a>
+<div class="flex gap-4">
+<span class="font-label-md text-label-md text-primary underline decoration-stone-300 underline-offset-4">1</span>
+<a class="font-label-md text-label-md text-stone-400 hover:text-primary transition-colors" href="#">2</a>
+<a class="font-label-md text-label-md text-stone-400 hover:text-primary transition-colors" href="#">3</a>
+</div>
+<a class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 hover:text-primary transition-colors" href="#">
+                NEXT
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</nav>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-24 border-t border-[#F5F0E6] dark:border-[#2D2926]">
+<div class="max-w-[720px] mx-auto py-16 px-6 flex flex-col items-center gap-6 text-center">
+<div class="flex flex-wrap justify-center gap-8 mb-4">
+<a class="font-serif text-sm tracking-wide text-stone-400 dark:text-stone-600 hover:text-[#2D2926] dark:hover:text-stone-100 underline decoration-stone-200 transition-all opacity-80 hover:opacity-100" href="#">Archive</a>
+<a class="font-serif text-sm tracking-wide text-stone-400 dark:text-stone-600 hover:text-[#2D2926] dark:hover:text-stone-100 underline decoration-stone-200 transition-all opacity-80 hover:opacity-100" href="#">Newsletter</a>
+<a class="font-serif text-sm tracking-wide text-stone-400 dark:text-stone-600 hover:text-[#2D2926] dark:hover:text-stone-100 underline decoration-stone-200 transition-all opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="font-serif text-sm tracking-wide text-stone-400 dark:text-stone-600 hover:text-[#2D2926] dark:hover:text-stone-100 underline decoration-stone-200 transition-all opacity-80 hover:opacity-100" href="#">Contact</a>
+</div>
+<p class="font-serif text-sm tracking-wide text-stone-400 dark:text-stone-600">© 2024 Digital Slow Living. Crafted for clarity.</p>
+</div>
+</footer>
+</body></html>
