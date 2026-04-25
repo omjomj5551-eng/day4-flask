@@ -16,6 +16,10 @@
       <div class="text-2xl italic font-semibold">저널</div>
       <div class="flex gap-3">
         <a href="{{ url_for('create_post') }}" class="px-6 py-2 border border-[#7e756f]">글쓰기</a>
+        <a href="{{ url_for('edit_post', post_id=post.id) }}" class="px-6 py-2 border border-[#7e756f]">수정</a>
+        <form method="post" action="{{ url_for('delete_post', post_id=post.id) }}" onsubmit="return confirm('정말 삭제할까요?');">
+          <button type="submit" class="px-6 py-2 border border-red-300 text-red-600">삭제</button>
+        </form>
         <a href="{{ url_for('list_posts') }}" class="px-6 py-2 bg-[#2d2926] text-[#FDFBF7]">목록</a>
       </div>
     </div>

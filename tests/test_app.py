@@ -67,6 +67,69 @@ class AppTestCase(unittest.TestCase):
         self.assertIn("내용을 입력하세요", body)
         self.assertIn("발행", body)
 
+    def test_detail_page_has_edit_delete_buttons_and_confirm_dialog(self):
+        create_response = self.client.post(
+            "/posts/new",
+            data={"title": "수정삭제 테스트", "content": "원본 내용"},
+            follow_redirects=False,
+        )
+        location = create_response.headers.get("Location", "")
+
+        detail_response = self.client.get(location)
+        self.assertEqual(detail_response.status_code, 200)
+        body = detail_response.data.decode()
+        self.assertIn("수정", body)
+        self.assertIn("삭제", body)
+        self.assertIn("정말 삭제할까요?", body)
+
+    def test_edit_page_reuses_new_form_and_updates_post(self):
+        create_response = self.client.post(
+            "/posts/new",
+            data={"title": "원제목", "content": "원내용"},
+            follow_redirects=False,
+        )
+        location = create_response.headers.get("Location", "")
+        post_id = int(location.rsplit("/", 1)[-1])
+
+        edit_get_response = self.client.get(f"/posts/{post_id}/edit")
+        self.assertEqual(edit_get_response.status_code, 200)
+        edit_body = edit_get_response.data.decode()
+        self.assertIn("글 수정", edit_body)
+        self.assertIn("수정 완료", edit_body)
+        self.assertIn("value=\"원제목\"", edit_body)
+        self.assertIn("원내용", edit_body)
+
+        edit_post_response = self.client.post(
+            f"/posts/{post_id}/edit",
+            data={"title": "수정된 제목", "content": "수정된 내용"},
+            follow_redirects=False,
+        )
+        self.assertEqual(edit_post_response.status_code, 302)
+
+        detail_response = self.client.get(f"/posts/{post_id}")
+        self.assertEqual(detail_response.status_code, 200)
+        detail_body = detail_response.data.decode()
+        self.assertIn("수정된 제목", detail_body)
+        self.assertIn("수정된 내용", detail_body)
+
+    def test_delete_post_removes_post(self):
+        create_response = self.client.post(
+            "/posts/new",
+            data={"title": "삭제될 글", "content": "삭제될 내용"},
+            follow_redirects=False,
+        )
+        location = create_response.headers.get("Location", "")
+        post_id = int(location.rsplit("/", 1)[-1])
+
+        delete_response = self.client.post(
+            f"/posts/{post_id}/delete",
+            follow_redirects=False,
+        )
+        self.assertEqual(delete_response.status_code, 302)
+
+        detail_response = self.client.get(f"/posts/{post_id}")
+        self.assertEqual(detail_response.status_code, 404)
+
     def test_detail_page_returns_404_for_missing_post(self):
         response = self.client.get("/posts/999")
         self.assertEqual(response.status_code, 404)

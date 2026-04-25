@@ -20,10 +20,12 @@
   </header>
 
   <main class="max-w-[720px] mx-auto px-[20px] md:px-0 mt-16 mb-20">
-    <form method="post" action="{{ url_for('create_post') }}" class="space-y-10">
+    <h1 class="text-3xl mb-8">{{ form_title }}</h1>
+    <form method="post" action="{{ form_action }}" class="space-y-10">
       <div>
-        <label for="title" class="sr-only">Title</label>
+        <label for="title" class="sr-only">제목</label>
         <input id="title" name="title" type="text" required placeholder="제목을 입력하세요"
+               value="{{ post.title if post else '' }}"
                class="w-full bg-transparent border-none p-0 text-5xl placeholder:italic placeholder:text-stone-400" />
       </div>
 
@@ -32,11 +34,11 @@
       <div>
         <label for="content" class="sr-only">내용</label>
         <textarea id="content" name="content" required placeholder="내용을 입력하세요"
-                  class="w-full min-h-[380px] bg-transparent border-none p-0 text-2xl leading-relaxed resize-none"></textarea>
+                  class="w-full min-h-[380px] bg-transparent border-none p-0 text-2xl leading-relaxed resize-none">{{ post.content if post else '' }}</textarea>
       </div>
 
       <div class="flex justify-end">
-        <button type="submit" class="bg-[#2D2926] text-[#FDFBF7] px-8 py-3" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: .1em; font-size: 12px;">발행</button>
+        <button type="submit" class="bg-[#2D2926] text-[#FDFBF7] px-8 py-3" style="font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: .1em; font-size: 12px;">{{ submit_label }}</button>
       </div>
     </form>
   </main>
