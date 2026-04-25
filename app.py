@@ -1,10 +1,11 @@
+import os
 import sqlite3
 from datetime import datetime
 
 from flask import Flask, abort, g, redirect, render_template, request, url_for
 
 app = Flask(__name__)
-app.config["DATABASE"] = "board.db"
+app.config["DATABASE"] = os.getenv("DATABASE_PATH", "board.db")
 
 
 def get_db():
@@ -15,6 +16,10 @@ def get_db():
 
 
 def init_db():
+    database_dir = os.path.dirname(app.config["DATABASE"])
+    if database_dir:
+        os.makedirs(database_dir, exist_ok=True)
+
     db = get_db()
     db.execute(
         """
