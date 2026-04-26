@@ -25,6 +25,26 @@
       <div class="w-16 h-px bg-[#cfc4bd] mx-auto"></div>
     </header>
 
+    <form method="get" action="{{ url_for('list_posts') }}" class="mb-10 flex items-center gap-3" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+      <input
+        type="text"
+        name="q"
+        value="{{ query }}"
+        placeholder="검색어 입력"
+        class="flex-1 border border-[#d4c9bc] bg-white px-4 py-2 text-sm focus:border-[#2D2926] focus:ring-0"
+      />
+      <select
+        name="sort"
+        onchange="this.form.submit()"
+        class="border border-[#d4c9bc] bg-white px-3 py-2 text-sm focus:border-[#2D2926] focus:ring-0"
+      >
+        <option value="latest" {% if sort == 'latest' %}selected{% endif %}>최신순</option>
+        <option value="oldest" {% if sort == 'oldest' %}selected{% endif %}>오래된순</option>
+        <option value="title" {% if sort == 'title' %}selected{% endif %}>제목순 (가나다)</option>
+      </select>
+      <button type="submit" class="px-4 py-2 border border-[#2D2926] hover:bg-stone-100">🔍 검색</button>
+    </form>
+
     <section class="space-y-12">
       {% for post in posts %}
       <article class="border-b border-[#F5F0E6] pb-8">
@@ -37,9 +57,29 @@
         <p class="text-lg text-[#4d4540] line-clamp-2">{{ post.content }}</p>
       </article>
       {% else %}
+      {% if query %}
+      <p class="text-[#4d4540]">검색 결과가 없습니다</p>
+      {% else %}
       <p class="text-[#4d4540]">아직 작성된 글이 없습니다. 첫 글을 작성해 보세요.</p>
+      {% endif %}
       {% endfor %}
     </section>
+
+    <nav class="mt-12 flex items-center justify-center gap-4" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+      {% if has_prev %}
+      <a href="{{ url_for('list_posts', page=page-1, q=query, sort=sort) }}" class="px-4 py-2 border border-[#2D2926] hover:bg-stone-100">이전</a>
+      {% else %}
+      <span class="px-4 py-2 border border-[#d4c9bc] text-[#b3a89c] cursor-not-allowed">이전</span>
+      {% endif %}
+
+      <span class="text-sm text-[#6e5b44]">{{ page }} / {{ total_pages }}</span>
+
+      {% if has_next %}
+      <a href="{{ url_for('list_posts', page=page+1, q=query, sort=sort) }}" class="px-4 py-2 border border-[#2D2926] hover:bg-stone-100">다음</a>
+      {% else %}
+      <span class="px-4 py-2 border border-[#d4c9bc] text-[#b3a89c] cursor-not-allowed">다음</span>
+      {% endif %}
+    </nav>
   </main>
 </body>
 </html>

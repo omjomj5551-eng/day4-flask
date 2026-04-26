@@ -45,10 +45,55 @@ def close_db(error):
 @app.route("/")
 def list_posts():
     db = get_db()
+    per_page = 10
+
+    page = request.args.get("page", default=1, type=int)
+    if page < 1:
+        page = 1
+
+    query = request.args.get("q", default="", type=str).strip()
+    sort = request.args.get("sort", default="latest", type=str)
+
+    order_by = "id DESC"
+    if sort == "oldest":
+        order_by = "id ASC"
+    elif sort == "title":
+        order_by = "title ASC"
+    else:
+        sort = "latest"
+
+    where_clause = ""
+    params = []
+    if query:
+        where_clause = "WHERE title LIKE ? OR content LIKE ?"
+        keyword = f"%{query}%"
+        params.extend([keyword, keyword])
+
+    total_posts = db.execute(
+        f"SELECT COUNT(*) FROM posts {where_clause}",
+        params,
+    ).fetchone()[0]
+    total_pages = max(1, (total_posts + per_page - 1) // per_page)
+
+    if page > total_pages:
+        page = total_pages
+
+    offset = (page - 1) * per_page
     posts = db.execute(
-        "SELECT id, title, content, created_at FROM posts ORDER BY id DESC"
+        f"SELECT id, title, content, created_at FROM posts {where_clause} ORDER BY {order_by} LIMIT ? OFFSET ?",
+        [*params, per_page, offset],
     ).fetchall()
-    return render_template("list.html", posts=posts)
+
+    return render_template(
+        "list.html",
+        posts=posts,
+        page=page,
+        total_pages=total_pages,
+        has_prev=(page > 1),
+        has_next=(page < total_pages),
+        query=query,
+        sort=sort,
+    )
 
 
 @app.route("/posts/new", methods=["GET", "POST"])
